@@ -1,0 +1,11 @@
+{
+  "name": "server",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Backend server for the application",
+  "author": "Jordy Morales <dev.morales.jordy@gmail.com>",
+  "keywords": [],
+  "license": "MIT",
+  "scripts": {}
+}

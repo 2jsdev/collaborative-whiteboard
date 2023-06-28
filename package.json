@@ -1,0 +1,13 @@
+{
+  "name": "collaborative-whiteboard",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "repository": "https://github.com/2jsdev/collaborative-whiteboard",
+  "author": "Jordy Morales <dev.morales.jordy@gmail.com>",
+  "license": "MIT"
+}
