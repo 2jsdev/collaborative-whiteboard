@@ -1,4 +1,4 @@
-export const toolTypes = {
+export const tools = {
   SELECTION: "SELECTION",
   RECTANGLE: "RECTANGLE",
   DIAMOND: "DIAMOND",
@@ -11,17 +11,17 @@ export const toolTypes = {
   ERASER: "ERASER",
 };
 
-export const toolTypeNames = {
-  [toolTypes.SELECTION]: "Selection",
-  [toolTypes.RECTANGLE]: "Rectangle",
-  [toolTypes.DIAMOND]: "Diamond",
-  [toolTypes.ELLIPSE]: "Ellipse",
-  [toolTypes.ARROW]: "Arrow",
-  [toolTypes.LINE]: "Line",
-  [toolTypes.PENCIL]: "Pencil",
-  [toolTypes.TEXT]: "Text",
-  [toolTypes.INSERT_IMAGE]: "Insert Image",
-  [toolTypes.ERASER]: "Eraser",
+export const toolNames = {
+  [tools.SELECTION]: "Selection",
+  [tools.RECTANGLE]: "Rectangle",
+  [tools.DIAMOND]: "Diamond",
+  [tools.ELLIPSE]: "Ellipse",
+  [tools.ARROW]: "Arrow",
+  [tools.LINE]: "Line",
+  [tools.PENCIL]: "Pencil",
+  [tools.TEXT]: "Text",
+  [tools.INSERT_IMAGE]: "Insert Image",
+  [tools.ERASER]: "Eraser",
 };
 
-export type ToolType = (typeof toolTypes)[keyof typeof toolTypes];
+export type Tool = (typeof tools)[keyof typeof tools];

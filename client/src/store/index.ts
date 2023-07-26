@@ -12,7 +12,9 @@ export const createStore = () =>
   configureStore({
     reducer: reducerList,
     middleware: (getDefaultMiddleware) => [
-      ...getDefaultMiddleware(),
+      ...getDefaultMiddleware({
+        serializableCheck: false,
+      }),
       appApi.middleware,
       rtkQueryErrorLogger,
     ],

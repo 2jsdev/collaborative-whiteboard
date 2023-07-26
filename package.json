@@ -7,7 +7,16 @@
     "client",
     "server"
   ],
+  "scripts": {
+    "build": "npm run build --workspace=client",
+    "start:server": "npm run start --workspace=server",
+    "dev:client": "npm run dev --workspace=client",
+    "dev": "concurrently\" npm run Build\" \"npm run dev --workspace=server\""
+  },
   "repository": "https://github.com/2jsdev/collaborative-whiteboard",
   "author": "Jordy Morales <dev.morales.jordy@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "concurrently": "^8.2.0"
+  }
 }

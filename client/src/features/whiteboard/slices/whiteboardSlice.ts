@@ -1,37 +1,42 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { ToolType, toolTypes } from "../../../constants/toolType";
 import { RootState } from "../../../store";
-
-type Element = {
-  id: string;
-  type: string;
-  x: number;
-  y: number;
-  width: number;
-  height: number;
-};
+import { Action, actions, Tool, tools } from "../../../constants";
+import { Element } from "../domain/Element";
 
 type WhiteboardState = {
-  tool: ToolType;
+  tool: Tool;
+  action: Action | null;
+  selectedElement: Element | null;
   elements: Element[];
-  history: Element[];
 };
 
 const initialState: WhiteboardState = {
-  tool: toolTypes.SELECTION,
+  tool: tools.SELECTION,
+  action: null,
   elements: [],
-  history: [],
+  selectedElement: null,
 };
 
 const whiteboardSlice = createSlice({
   name: "whiteboard",
   initialState,
   reducers: {
-    setToolType: (state, action: PayloadAction<ToolType>) => {
+    setTool: (state, action: PayloadAction<Tool>) => {
       state.tool = action.payload;
     },
-    addElement: (state, action: PayloadAction<Element>) => {
-      state.elements.push(action.payload);
+    setAction: (state, action: PayloadAction<Action | null>) => {
+      state.action = action.payload;
+
+      switch (action.payload) {
+        case actions.SELECTING:
+          state.tool = tools.SELECTION;
+          break;
+        default:
+          break;
+      }
+    },
+    setSelectedElement: (state, action: PayloadAction<Element | null>) => {
+      state.selectedElement = action.payload;
     },
     updateElement: (state, action: PayloadAction<Element>) => {
       const { id } = action.payload;
@@ -49,11 +54,18 @@ const whiteboardSlice = createSlice({
   },
 });
 
-export const { setToolType, addElement, updateElement, setElements } =
-  whiteboardSlice.actions;
+export const {
+  setTool,
+  setAction,
+  setSelectedElement,
+  updateElement,
+  setElements,
+} = whiteboardSlice.actions;
 
-export const selectToolType = (state: RootState) => state.whiteboard.tool;
+export const selectTool = (state: RootState) => state.whiteboard.tool;
+export const selectAction = (state: RootState) => state.whiteboard.action;
 export const selectElements = (state: RootState) => state.whiteboard.elements;
-export const selectHistory = (state: RootState) => state.whiteboard.history;
+export const selectSelectedElement = (state: RootState) =>
+  state.whiteboard.selectedElement;
 
 export default whiteboardSlice.reducer;
